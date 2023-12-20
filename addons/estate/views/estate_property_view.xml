@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tree_property_list" model="ir.ui.view">
+    	<field name="name">estate.property.tree</field>
+    	<field name="model">estate.property</field>
+    	<field name="priority">2</field>
+    	<field name="arch" type="xml">
+    		<tree>
+    			<field name="name"/>					
+    			<field name="postcode"/>					
+    			<field name="bedrooms"/>					
+    			<field name="living_area"/>					
+    			<field name="expected_price"/>					
+    			<field name="date_availability"/>					
+    		</tree>
+    	</field>
+    </record>
+
+    <record id="form_property_list" model="ir.ui.view">
+    	<field name="name">estate.property.form</field>
+    	<field name="model">estate.property</field>
+
+    	<field name="arch" type="xml">
+            <form String="Property">
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <field name="property_tag_ids" widget="many2many_tags"/>
+                    <group>
+                        <group>
+                            <field name="property_type_id"/>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                            <field name="best_offer"/>
+                        </group>
+    
+                    </group>
+
+                    <notebook>
+                        <page string="Description">
+
+                            <group>
+                                <field name="description"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                                <field name="total_area"/>
+                            </group>
+
+                        </page>
+
+                        <page string="Offers">
+                            <field name="offer_ids">
+                                <tree>
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+                                    <field name="status"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="partner_id"/>                
+                                        <field name="price"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+
+                        <page string="Other info">
+                            <group>
+                                <field name="user_id" />
+                                
+                            </group>
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="search_property_list" model="ir.ui.view">
+    	<field name="name">estate.property.search</field>
+    	<field name="model">estate.property</field>
+    	<field name="arch" type="xml">
+
+            <search string="Properties">
+                <field name="name" string="Title" />
+                <field name="postcode" string="Postcode"/>
+            </search>
+
+
+        </field>
+
+    </record>
+
+</odoo>
